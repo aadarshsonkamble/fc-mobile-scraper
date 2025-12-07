@@ -2,25 +2,33 @@ name: Scrape FC Mobile Players (5 parallel)
 
 on:
   workflow_dispatch:
+  schedule:
+    - cron: '0 */6 * * *'  # Every 6 hours
 
 jobs:
   scraper-1:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v4
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
         with:
-          python-version: '3.10'
+          python-version: '3.11'
+
       - name: Install dependencies
-        run: pip install aiohttp beautifulsoup4 requests
-      - name: Run scraper 1
         run: |
-          sed -i 's/ASSET_IDS_CSV = "asset_ids.csv"/ASSET_IDS_CSV = "asset_ids_1.csv"/' stats_scrape.py
-          sed -i 's/CSV_OUTPUT = "players_stats_all_levels.csv"/CSV_OUTPUT = "players_stats_1.csv"/' stats_scrape.py
-          sed -i 's/SKILLS_JSON_OUTPUT = "players_skills_data.json"/SKILLS_JSON_OUTPUT = "players_skills_1.json"/' stats_scrape.py
-          sed -i 's/FAILED_IDS_FILE = "failed_stats_scrape_id.txt"/FAILED_IDS_FILE = "failed_stats_1.txt"/' stats_scrape.py
-          python3 stats_scrape.py
-      - uses: actions/upload-artifact@v4
+          pip install aiohttp beautifulsoup4 requests
+
+      - name: Run scraper 1
+        env:
+          SCRAPER_NUM: "1"
+        run: python stats_scrape.py
+
+      - name: Upload artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
         with:
           name: scraper-1-results
           path: |
@@ -32,20 +40,26 @@ jobs:
   scraper-2:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v4
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
         with:
-          python-version: '3.10'
+          python-version: '3.11'
+
       - name: Install dependencies
-        run: pip install aiohttp beautifulsoup4 requests
-      - name: Run scraper 2
         run: |
-          sed -i 's/ASSET_IDS_CSV = "asset_ids.csv"/ASSET_IDS_CSV = "asset_ids_2.csv"/' stats_scrape.py
-          sed -i 's/CSV_OUTPUT = "players_stats_all_levels.csv"/CSV_OUTPUT = "players_stats_2.csv"/' stats_scrape.py
-          sed -i 's/SKILLS_JSON_OUTPUT = "players_skills_data.json"/SKILLS_JSON_OUTPUT = "players_skills_2.json"/' stats_scrape.py
-          sed -i 's/FAILED_IDS_FILE = "failed_stats_scrape_id.txt"/FAILED_IDS_FILE = "failed_stats_2.txt"/' stats_scrape.py
-          python3 stats_scrape.py
-      - uses: actions/upload-artifact@v4
+          pip install aiohttp beautifulsoup4 requests
+
+      - name: Run scraper 2
+        env:
+          SCRAPER_NUM: "2"
+        run: python stats_scrape.py
+
+      - name: Upload artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
         with:
           name: scraper-2-results
           path: |
@@ -57,20 +71,26 @@ jobs:
   scraper-3:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v4
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
         with:
-          python-version: '3.10'
+          python-version: '3.11'
+
       - name: Install dependencies
-        run: pip install aiohttp beautifulsoup4 requests
-      - name: Run scraper 3
         run: |
-          sed -i 's/ASSET_IDS_CSV = "asset_ids.csv"/ASSET_IDS_CSV = "asset_ids_3.csv"/' stats_scrape.py
-          sed -i 's/CSV_OUTPUT = "players_stats_all_levels.csv"/CSV_OUTPUT = "players_stats_3.csv"/' stats_scrape.py
-          sed -i 's/SKILLS_JSON_OUTPUT = "players_skills_data.json"/SKILLS_JSON_OUTPUT = "players_skills_3.json"/' stats_scrape.py
-          sed -i 's/FAILED_IDS_FILE = "failed_stats_scrape_id.txt"/FAILED_IDS_FILE = "failed_stats_3.txt"/' stats_scrape.py
-          python3 stats_scrape.py
-      - uses: actions/upload-artifact@v4
+          pip install aiohttp beautifulsoup4 requests
+
+      - name: Run scraper 3
+        env:
+          SCRAPER_NUM: "3"
+        run: python stats_scrape.py
+
+      - name: Upload artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
         with:
           name: scraper-3-results
           path: |
@@ -82,20 +102,26 @@ jobs:
   scraper-4:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v4
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
         with:
-          python-version: '3.10'
+          python-version: '3.11'
+
       - name: Install dependencies
-        run: pip install aiohttp beautifulsoup4 requests
-      - name: Run scraper 4
         run: |
-          sed -i 's/ASSET_IDS_CSV = "asset_ids.csv"/ASSET_IDS_CSV = "asset_ids_4.csv"/' stats_scrape.py
-          sed -i 's/CSV_OUTPUT = "players_stats_all_levels.csv"/CSV_OUTPUT = "players_stats_4.csv"/' stats_scrape.py
-          sed -i 's/SKILLS_JSON_OUTPUT = "players_skills_data.json"/SKILLS_JSON_OUTPUT = "players_skills_4.json"/' stats_scrape.py
-          sed -i 's/FAILED_IDS_FILE = "failed_stats_scrape_id.txt"/FAILED_IDS_FILE = "failed_stats_4.txt"/' stats_scrape.py
-          python3 stats_scrape.py
-      - uses: actions/upload-artifact@v4
+          pip install aiohttp beautifulsoup4 requests
+
+      - name: Run scraper 4
+        env:
+          SCRAPER_NUM: "4"
+        run: python stats_scrape.py
+
+      - name: Upload artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
         with:
           name: scraper-4-results
           path: |
@@ -107,20 +133,26 @@ jobs:
   scraper-5:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v4
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
         with:
-          python-version: '3.10'
+          python-version: '3.11'
+
       - name: Install dependencies
-        run: pip install aiohttp beautifulsoup4 requests
-      - name: Run scraper 5
         run: |
-          sed -i 's/ASSET_IDS_CSV = "asset_ids.csv"/ASSET_IDS_CSV = "asset_ids_5.csv"/' stats_scrape.py
-          sed -i 's/CSV_OUTPUT = "players_stats_all_levels.csv"/CSV_OUTPUT = "players_stats_5.csv"/' stats_scrape.py
-          sed -i 's/SKILLS_JSON_OUTPUT = "players_skills_data.json"/SKILLS_JSON_OUTPUT = "players_skills_5.json"/' stats_scrape.py
-          sed -i 's/FAILED_IDS_FILE = "failed_stats_scrape_id.txt"/FAILED_IDS_FILE = "failed_stats_5.txt"/' stats_scrape.py
-          python3 stats_scrape.py
-      - uses: actions/upload-artifact@v4
+          pip install aiohttp beautifulsoup4 requests
+
+      - name: Run scraper 5
+        env:
+          SCRAPER_NUM: "5"
+        run: python stats_scrape.py
+
+      - name: Upload artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
         with:
           name: scraper-5-results
           path: |

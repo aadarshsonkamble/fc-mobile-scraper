@@ -15,9 +15,15 @@ from collections import Counter
 
 BASE_URL = "https://renderz.app/24/player/"
 ASSET_IDS_CSV = "asset_ids.csv"
-CSV_OUTPUT = "players_stats_all_levels.csv"
-SKILLS_JSON_OUTPUT = "players_skills_data.json"
-FAILED_IDS_FILE = "failed_stats_scrape_id.txt"
+
+
+# Get scraper number from environment variable
+SCRAPER_NUM = os.environ.get('SCRAPER_NUM', '1')
+
+CSV_OUTPUT = f"players_stats_{SCRAPER_NUM}.csv"
+SKILLS_JSON_OUTPUT = f"players_skills_{SCRAPER_NUM}.json"
+FAILED_IDS_FILE = f"failed_stats_{SCRAPER_NUM}.txt"
+
 
 # ID RANGE CONFIGURATION
 # Supabase key is Supabase service role key for this
