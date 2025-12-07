@@ -20,7 +20,7 @@ jobs:
           sed -i 's/SKILLS_JSON_OUTPUT = "players_skills_data.json"/SKILLS_JSON_OUTPUT = "players_skills_1.json"/' stats_scrape.py
           sed -i 's/FAILED_IDS_FILE = "failed_stats_scrape_id.txt"/FAILED_IDS_FILE = "failed_stats_1.txt"/' stats_scrape.py
           python3 stats_scrape.py
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         with:
           name: scraper-1-results
           path: |
@@ -44,7 +44,7 @@ jobs:
           sed -i 's/SKILLS_JSON_OUTPUT = "players_skills_data.json"/SKILLS_JSON_OUTPUT = "players_skills_2.json"/' stats_scrape.py
           sed -i 's/FAILED_IDS_FILE = "failed_stats_scrape_id.txt"/FAILED_IDS_FILE = "failed_stats_2.txt"/' stats_scrape.py
           python3 stats_scrape.py
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         with:
           name: scraper-2-results
           path: |
@@ -68,7 +68,7 @@ jobs:
           sed -i 's/SKILLS_JSON_OUTPUT = "players_skills_data.json"/SKILLS_JSON_OUTPUT = "players_skills_3.json"/' stats_scrape.py
           sed -i 's/FAILED_IDS_FILE = "failed_stats_scrape_id.txt"/FAILED_IDS_FILE = "failed_stats_3.txt"/' stats_scrape.py
           python3 stats_scrape.py
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         with:
           name: scraper-3-results
           path: |
@@ -92,7 +92,7 @@ jobs:
           sed -i 's/SKILLS_JSON_OUTPUT = "players_skills_data.json"/SKILLS_JSON_OUTPUT = "players_skills_4.json"/' stats_scrape.py
           sed -i 's/FAILED_IDS_FILE = "failed_stats_scrape_id.txt"/FAILED_IDS_FILE = "failed_stats_4.txt"/' stats_scrape.py
           python3 stats_scrape.py
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         with:
           name: scraper-4-results
           path: |
@@ -116,7 +116,7 @@ jobs:
           sed -i 's/SKILLS_JSON_OUTPUT = "players_skills_data.json"/SKILLS_JSON_OUTPUT = "players_skills_5.json"/' stats_scrape.py
           sed -i 's/FAILED_IDS_FILE = "failed_stats_scrape_id.txt"/FAILED_IDS_FILE = "failed_stats_5.txt"/' stats_scrape.py
           python3 stats_scrape.py
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         with:
           name: scraper-5-results
           path: |
