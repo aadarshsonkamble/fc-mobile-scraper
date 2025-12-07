@@ -1,0 +1,33 @@
+# Environment variables
+.env
+headers.json
+
+# Python cache
+__pycache__/
+*.pyc
+
+# SQLite database
+*.db
+
+# VS Code settings
+.vscode/
+
+# Logs
+*.log
+
+# Virtual environment
+venv/
+
+# Scraper output files
+players_stats_*.csv
+players_skills_*.json
+failed_stats_*.txt
+*.tmp
+asset_ids.csv
+
+# Keep only split CSVs
+!asset_ids_1.csv
+!asset_ids_2.csv
+!asset_ids_3.csv
+!asset_ids_4.csv
+!asset_ids_5.csv
