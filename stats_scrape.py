@@ -14,7 +14,15 @@ from collections import Counter
 
 
 BASE_URL = "https://renderz.app/24/player/"
-ASSET_IDS_CSV = "asset_ids.csv"
+
+# Get scraper number from environment variable
+SCRAPER_NUM = os.environ.get('SCRAPER_NUM', '1')
+
+ASSET_IDS_CSV = f"asset_ids_{SCRAPER_NUM}.csv"
+CSV_OUTPUT = f"players_stats_{SCRAPER_NUM}.csv"
+SKILLS_JSON_OUTPUT = f"players_skills_{SCRAPER_NUM}.json"
+FAILED_IDS_FILE = f"failed_stats_{SCRAPER_NUM}.txt"
+
 
 
 # Get scraper number from environment variable
