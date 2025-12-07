@@ -7,7 +7,7 @@ jobs:
   scraper-1:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - uses: actions/setup-python@v4
         with:
           python-version: '3.10'
@@ -27,11 +27,12 @@ jobs:
             players_stats_1.csv
             players_skills_1.json
             failed_stats_1.txt
+          if-no-files-found: warn
 
   scraper-2:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - uses: actions/setup-python@v4
         with:
           python-version: '3.10'
@@ -51,11 +52,12 @@ jobs:
             players_stats_2.csv
             players_skills_2.json
             failed_stats_2.txt
+          if-no-files-found: warn
 
   scraper-3:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - uses: actions/setup-python@v4
         with:
           python-version: '3.10'
@@ -75,11 +77,12 @@ jobs:
             players_stats_3.csv
             players_skills_3.json
             failed_stats_3.txt
+          if-no-files-found: warn
 
   scraper-4:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - uses: actions/setup-python@v4
         with:
           python-version: '3.10'
@@ -99,11 +102,12 @@ jobs:
             players_stats_4.csv
             players_skills_4.json
             failed_stats_4.txt
+          if-no-files-found: warn
 
   scraper-5:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - uses: actions/setup-python@v4
         with:
           python-version: '3.10'
@@ -122,4 +126,5 @@ jobs:
           path: |
             players_stats_5.csv
             players_skills_5.json
-
+            failed_stats_5.txt
+          if-no-files-found: warn
