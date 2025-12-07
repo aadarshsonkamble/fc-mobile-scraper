@@ -1,9 +1,9 @@
-name: Scrape FC Mobile Players (5 parallel)
+name: Scrape FC Mobile Players (8 parallel)
 
 on:
   workflow_dispatch:
-  schedule:
-    - cron: '0 */6 * * *'  # Every 6 hours
+  # schedule:
+  #   - cron: '0 */6 * * *'
 
 jobs:
   scraper-1:
@@ -159,4 +159,97 @@ jobs:
             players_stats_5.csv
             players_skills_5.json
             failed_stats_5.txt
+          if-no-files-found: warn
+
+  scraper-6:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          pip install aiohttp beautifulsoup4 requests
+
+      - name: Run scraper 6
+        env:
+          SCRAPER_NUM: "6"
+        run: python stats_scrape.py
+
+      - name: Upload artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: scraper-6-results
+          path: |
+            players_stats_6.csv
+            players_skills_6.json
+            failed_stats_6.txt
+          if-no-files-found: warn
+
+  scraper-7:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          pip install aiohttp beautifulsoup4 requests
+
+      - name: Run scraper 7
+        env:
+          SCRAPER_NUM: "7"
+        run: python stats_scrape.py
+
+      - name: Upload artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: scraper-7-results
+          path: |
+            players_stats_7.csv
+            players_skills_7.json
+            failed_stats_7.txt
+          if-no-files-found: warn
+
+  scraper-8:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          pip install aiohttp beautifulsoup4 requests
+
+      - name: Run scraper 8
+        env:
+          SCRAPER_NUM: "8"
+        run: python stats_scrape.py
+
+      - name: Upload artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: scraper-8-results
+          path: |
+            players_stats_8.csv
+            players_skills_8.json
+            failed_stats_8.txt
           if-no-files-found: warn
