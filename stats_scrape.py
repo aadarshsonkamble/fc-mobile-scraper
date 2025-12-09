@@ -18,7 +18,7 @@ BASE_URL = "https://renderz.app/24/player/"
 # Get scraper number from environment variable
 SCRAPER_NUM = os.environ.get('SCRAPER_NUM', '1')
 
-ASSET_IDS_CSV = f"still_missing_{SCRAPER_NUM}.csv"
+ASSET_IDS_CSV = f"final_missing_{SCRAPER_NUM}.csv"
 CSV_OUTPUT = f"players_stats_{SCRAPER_NUM}.csv"
 SKILLS_JSON_OUTPUT = f"players_skills_{SCRAPER_NUM}.json"
 FAILED_IDS_FILE = f"failed_stats_{SCRAPER_NUM}.txt"
